@@ -7,7 +7,7 @@
       <div class="tips">
         <h1>{{this.type}}</h1>
         <h2>{{this.config[type].desc}}</h2>
-        <a-button type="primary" @click="this.goHome">返回首页</a-button>
+        <el-button type="primary" @click="this.goHome">返回首页</el-button>
       </div>
     </div>
     <page-footer/>
@@ -15,36 +15,36 @@
 </template>
 
 <script>
-	import PageFooter from '../pageFooter/PageFooter'
-	import config from './typeConfig'
+import PageFooter from '../pageFooter/PageFooter'
+import config from './typeConfig'
 
-	export default {
-		name: "ExceptionPage",
-		data() {
-			return {
-				config: config
-			}
-		},
-		props: {
-			type: {
-				propTypes: String,
-				required: true,
-			}
-		},
-		components: {
-			PageFooter
-		},
-		computed: {
-			getImgUrl() {
-				return `background-image: url(${config[this.type].img})`
-			}
-		},
-		methods: {
-			goHome() {
-				window.location.href = '/#/form/basicForm'
-			}
-		}
-	}
+export default {
+  name: 'ExceptionPage',
+  data () {
+    return {
+      config: config
+    }
+  },
+  props: {
+    type: {
+      propTypes: String,
+      required: true
+    }
+  },
+  components: {
+    PageFooter
+  },
+  computed: {
+    getImgUrl () {
+      return `background-image: url(${config[this.type].img})`
+    }
+  },
+  methods: {
+    goHome () {
+      window.location.href = '/#/form/basicForm'
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

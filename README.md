@@ -30,6 +30,7 @@ npm test
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 # TODO
+*history version:[ant-pro-of-vue](https://github.com/huyoo/ant-pro-of-vue)*
 1. ~~demo~~
 2. ~~vuex~~
 3. ~~login authority~~

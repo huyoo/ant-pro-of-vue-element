@@ -10,7 +10,7 @@ import '@/mock'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-Vue.prototype.$event = new Vue();
+Vue.prototype.$event = new Vue()
 
 /* eslint-disable no-new */
 new Vue({

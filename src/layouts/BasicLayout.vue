@@ -11,63 +11,63 @@
 </template>
 
 <script>
-  import {PageHeader, SideMenu} from '@/components'
+import {PageHeader, SideMenu} from '@/components'
 
-  export default {
-    name: 'BasicLayout',
-    data () {
-      return {
-        // isSideMenu: true,
-        // isMobile: false,
-        // collapse: false,
-        // sideMenuStyle: {
-        // 	flex: '0 0 256px',
-        // }
-        isMobile: true,
-        collapse: true,
-        sideMenuStyle: {flex: '0 0 80px'}
-      }
-    },
-    components: {
-      SideMenu,
-      PageHeader
-    },
-    computed: {},
-    watch: {},
-    methods: {
-      dealClientWidth () {
-        const clientWidth = document.documentElement.clientWidth
-        if (clientWidth > 1200) {
-          this.isMobile = false
-          this.collapse = false
-          this.sideMenuStyle = {
-            flex: '0 0 256px'
-          }
-        } else if (clientWidth <= 1200 && clientWidth >= 576) {
-          this.isMobile = false
-          this.collapse = true
-          this.sideMenuStyle = {flex: '0 0 80px'}
-        } else if (clientWidth < 576) {
-          this.isMobile = true
-          this.collapse = true
-          this.sideMenuStyle = {flex: '0 0 80px'}
+export default {
+  name: 'BasicLayout',
+  data () {
+    return {
+      // isSideMenu: true,
+      // isMobile: false,
+      // collapse: false,
+      // sideMenuStyle: {
+      // flex: '0 0 256px',
+      // }
+      isMobile: true,
+      collapse: true,
+      sideMenuStyle: {flex: '0 0 80px'}
+    }
+  },
+  components: {
+    SideMenu,
+    PageHeader
+  },
+  computed: {},
+  watch: {},
+  methods: {
+    dealClientWidth () {
+      const clientWidth = document.documentElement.clientWidth
+      if (clientWidth > 1200) {
+        this.isMobile = false
+        this.collapse = false
+        this.sideMenuStyle = {
+          flex: '0 0 256px'
         }
-      },
-      toggleMenu () {
-        this.collapse = !this.collapse
-        this.sideMenuStyle = {flex: `0 0 ${this.collapse ? '80px' : '256px'}`}
+      } else if (clientWidth <= 1200 && clientWidth >= 576) {
+        this.isMobile = false
+        this.collapse = true
+        this.sideMenuStyle = {flex: '0 0 80px'}
+      } else if (clientWidth < 576) {
+        this.isMobile = true
+        this.collapse = true
+        this.sideMenuStyle = {flex: '0 0 80px'}
       }
     },
-    created () {
-      // this.dealClientWidth();
-    },
-    mounted () {
-      let _this = this
-      window.onresize = () => {
-        // _this.dealClientWidth();
-      }
+    toggleMenu () {
+      this.collapse = !this.collapse
+      this.sideMenuStyle = {flex: `0 0 ${this.collapse ? '80px' : '256px'}`}
+    }
+  },
+  created () {
+    // this.dealClientWidth();
+  },
+  mounted () {
+    // let _this = this
+    window.onresize = () => {
+      // _this.dealClientWidth();
     }
   }
+}
 </script>
 
 <style scoped lang="less">

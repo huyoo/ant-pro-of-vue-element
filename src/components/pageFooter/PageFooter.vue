@@ -4,7 +4,7 @@
       <div>
         <a href="#">Pro 首页</a>
         <a href="https://github.com/huyoo/antd-pro-vue">
-          <a-icon type="github"></a-icon>
+          <i class="el-icon-edit"></i>
         </a>
         <a href="https://vue.ant.design/docs/vue/introduce/">Ant Design</a>
       </div>
@@ -16,9 +16,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'PageFooter'
-  }
+export default {
+  name: 'PageFooter'
+}
 </script>
 
 <style scoped lang="less">

@@ -12,5 +12,5 @@ Vue.use(Vuex)
 Vue.use(VueLs)
 
 export default new Vuex.Store({
-  modules: {stepForm, login, permission},
+  modules: {stepForm, login, permission}
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <span class="menu-fold" @click="clickMenuIcon">
-      <a-icon :type="collapse?'menu-unfold':'menu-fold'"></a-icon>
+       <i :class="collapse?'el-icon-s-unfold':'el-icon-s-fold'"></i>
     </span>
     <div class="tool-bar">
       <span>查找</span>
@@ -14,31 +14,31 @@
 </template>
 
 <script>
-  export default {
-    name: 'PageHeader',
-    props: {
-      isMobile: {
-        propTypes: Boolean,
-        required: false,
-        default: false
-      },
-      collapse: {
-        propTypes: Boolean,
-        required: false,
-        default: false
-      }
+export default {
+  name: 'PageHeader',
+  props: {
+    isMobile: {
+      propTypes: Boolean,
+      required: false,
+      default: false
     },
-    data () {
-      return {
-        menuType: 'menu-fold'
-      }
-    },
-    methods: {
-      clickMenuIcon () {
-        this.$emit('changeMenu')
-      }
+    collapse: {
+      propTypes: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  data () {
+    return {
+      menuType: 'menu-fold'
+    }
+  },
+  methods: {
+    clickMenuIcon () {
+      this.$emit('changeMenu')
     }
   }
+}
 </script>
 
 <style scoped lang="less">

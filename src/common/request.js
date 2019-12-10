@@ -1,33 +1,32 @@
 import Vue from 'vue'
 import axios from 'axios'
 import store from '@/store/store'
-import notification from 'ant-design-vue/es/notification'
 import { VueAxios } from './axios'
 // import { ACCESS_TOKEN } from '@/store/mutation-types'
 
-const ACCESS_TOKEN = 'Access-Token';
+const ACCESS_TOKEN = 'Access-Token'
 
 // 创建 axios 实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL, // api base_url
   timeout: 6000 // 请求超时时间
-});
+})
 
 const err = (error) => {
   if (error.response) {
-    const data = error.response.data;
-    const token = Vue.ls.get(ACCESS_TOKEN);
+    const data = error.response.data
+    const token = Vue.ls.get(ACCESS_TOKEN)
     if (error.response.status === 403) {
-      notification.error({
+      this.$notify.error({
         message: 'Forbidden',
         description: data.message
       })
     }
     if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
-      notification.error({
+      this.$notify.error({
         message: 'Unauthorized',
         description: 'Authorization verification failed'
-      });
+      })
       if (token) {
         store.dispatch('Logout').then(() => {
           setTimeout(() => {
@@ -38,7 +37,7 @@ const err = (error) => {
     }
   }
   return Promise.reject(error)
-};
+}
 
 // request interceptor
 service.interceptors.request.use(config => {
@@ -52,14 +51,14 @@ service.interceptors.request.use(config => {
 // response interceptor
 service.interceptors.response.use((response) => {
   return response.data
-}, err);
+}, err)
 
 const installer = {
   vm: {},
   install (Vue) {
     Vue.use(VueAxios, service)
   }
-};
+}
 
 export {
   installer as VueAxios,

@@ -6,7 +6,7 @@ import router from './index'
 import store from '@/store/store'
 import {asyncRouterMap} from '@/router/router.config'
 
-const defaultRoutePath = '/dashboard/analysis'
+const defaultRoutePath = '/exception/404'
 
 router.beforeEach((to, from, next) => {
   // store没有token 则校验localStorage是否有刚登陆过的用户，如仍然没有就跳转到登录页

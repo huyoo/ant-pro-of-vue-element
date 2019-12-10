@@ -3,13 +3,14 @@
  * create by hy ON 2019/5/12
  */
 import BasicLayout from '@/layouts/BasicLayout'
-import PageLayout from '@/layouts/PageLayout'
+// import PageLayout from '@/layouts/PageLayout'
 // import BasicForm from '@/pages/form/BasicForm'
 // import StepForm from '@/pages/form/StepForm/StepForm'
 import BlankLayout from '@/layouts/BlankLayout'
 import Exception404 from '@/pages/exception/404'
 import Exception403 from '@/pages/exception/403'
 import Exception500 from '@/pages/exception/500'
+import Login from '@/pages/login/Login'
 // import TableList from '@/pages/list/TableList'
 // import StandardList from '@/pages/list/StandardList'
 // import Success from '@/pages/result/Success'
@@ -17,10 +18,9 @@ import Exception500 from '@/pages/exception/500'
 // import AdvanceProfile from '@/pages/profile/AdvanceProfile'
 // import BasicProfile from '@/pages/profile/BasicProfile'
 // import UserCenter from '@/pages/user/center/UserCenter'
-// import Login from '@/pages/user/authorization/login'
 // import Dashboard from '@/pages/dashboard/Dashboard'
-import EventBusParent from '@/pages/feature/eventBus/EventBusParent'
-import ReuseView from '@/pages/feature/reuse/ReuseView'
+// import EventBusParent from '@/pages/feature/eventBus/EventBusParent'
+// import ReuseView from '@/pages/feature/reuse/ReuseView'
 
 // 所有权限通用路由表
 // 如首页和登录页和一些不用权限的公用页面
@@ -31,11 +31,11 @@ export const constantRouterMap = [
 export const asyncRouterMap = [
   {
     path: '/',
-    name: 'Dashboard.vue',
+    name: 'Dashboard',
     meta: {title: '首页'},
     component: BasicLayout,
     children: [
-      {
+      /* {
         path: '/dashboard',
         name: 'dashboard',
         meta: {title: '仪表盘', icon: 'dashboard'},
@@ -120,7 +120,7 @@ export const asyncRouterMap = [
             component: Fail
           }
         ]
-      }, {
+      }, */ {
         path: '/exception',
         name: 'exception',
         component: BlankLayout,
@@ -143,7 +143,8 @@ export const asyncRouterMap = [
             component: Exception500
           }
         ]
-      }, {
+      }
+      /* {
         path: '/feature',
         name: 'feature',
         component: PageLayout,
@@ -175,7 +176,7 @@ export const asyncRouterMap = [
             component: UserCenter
           }
         ]
-      }
+      } */
       // { path: '*', redirect: '/exception/404', hidden: true }
       /* {
           path: '/form',
