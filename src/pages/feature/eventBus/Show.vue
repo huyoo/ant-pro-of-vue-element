@@ -3,24 +3,24 @@
 </template>
 
 <script>
-    import eventBus from "@/pages/feature/eventBus/eventBus";
+import eventBus from '@/pages/feature/eventBus/eventBus'
 
-    export default {
-        name: "Show",
-        data(){
-            return {
-                targetName: '--',
-                age: '--'
-            }
-        },
-        created() {
-            eventBus.$on('clickTarget', value => {
-                this.targetName = value.name;
-                this.age = value.age;
-                // console.log(this, value)
-            })
-        }
+export default {
+  name: 'Show',
+  data () {
+    return {
+      targetName: '--',
+      age: '--'
     }
+  },
+  created () {
+    eventBus.$on('clickTarget', value => {
+      this.targetName = value.name
+      this.age = value.age
+      // console.log(this, value)
+    })
+  }
+}
 </script>
 
 <style scoped>

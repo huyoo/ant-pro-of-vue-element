@@ -13,6 +13,9 @@ import Exception500 from '@/pages/exception/500'
 import Login from '@/pages/login/Login'
 import Fail from '@/pages/result/Fail'
 import Success from '@/pages/result/Success'
+import UserCenter from '@/pages/user/center/UserCenter'
+import PageLayout from '@/layouts/PageLayout'
+import EventBusParent from '@/pages/feature/eventBus/EventBusParent'
 // import TableList from '@/pages/list/TableList'
 // import StandardList from '@/pages/list/StandardList'
 // import Success from '@/pages/result/Success'
@@ -145,30 +148,29 @@ export const asyncRouterMap = [
             component: Exception500
           }
         ]
-      }
-      /* {
+      }, {
         path: '/feature',
         name: 'feature',
         component: PageLayout,
-        meta: {title: '测试页', icon: 'read'},
+        meta: {title: '测试页', icon: 'el-icon-s-order'},
         children: [
           {
             path: '/feature/eventBus',
             name: 'eventBus',
             meta: {title: '事件总线'},
             component: EventBusParent
-          }, {
+          }
+          /* {
             path: '/feature/reuseView',
             name: 'reuseView',
             meta: {title: '组合复用'},
             component: ReuseView
-          }
+          } */
         ]
-      },
-      {
+      }, {
         path: '/user',
         name: 'user',
-        meta: {title: '个人页', icon: 'user', permission: 'user'},
+        meta: {title: '个人页', icon: 'el-icon-user', permission: 'user'},
         component: BlankLayout,
         children: [
           {
@@ -178,7 +180,7 @@ export const asyncRouterMap = [
             component: UserCenter
           }
         ]
-      } */
+      }
       // { path: '*', redirect: '/exception/404', hidden: true }
       /* {
           path: '/form',

@@ -13,35 +13,35 @@
 </template>
 
 <script>
-	import {PageFooter, BreadcrumbPro} from "@/components";
+import {PageFooter, BreadcrumbPro} from '@/components'
 
-	export default {
-		name: "PageLayout",
-		components: {
-			PageFooter,
-			BreadcrumbPro
-		},
-		data() {
-			return {
-				description: null,
-				title: ''
-			}
-		},
-		mounted() {
-			this.getPageMeta();
-		},
-		updated() {
-			this.getPageMeta();
-		},
-		methods: {
-			getPageMeta() {
-				const content = this.$refs.content;
+export default {
+  name: 'PageLayout',
+  components: {
+    PageFooter,
+    BreadcrumbPro
+  },
+  data () {
+    return {
+      description: null,
+      title: ''
+    }
+  },
+  mounted () {
+    this.getPageMeta()
+  },
+  updated () {
+    this.getPageMeta()
+  },
+  methods: {
+    getPageMeta () {
+      const content = this.$refs.content
 
-				this.description = content.description || null;
-				this.title = this.$route.meta.title;
-			},
-		}
-	}
+      this.description = content.description || null
+      this.title = this.$route.meta.title
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

@@ -4,23 +4,23 @@
  */
 
 export default {
-    methods: {
-        handlePageChange(pagination, filters, sorter){
-            // console.log(pagination, filters, sorter);
-            this.pagination.current = pagination.current;
-            this.getData();
-        },
-        handleSearch(value){
-            console.log(value);
-            this.searchValue = value;
-            this.getData();
-        },
-        getData(){
-            this.loading = true;
+  methods: {
+    handlePageChange (pagination, filters, sorter) {
+      // console.log(pagination, filters, sorter);
+      this.pagination.current = pagination.current
+      this.getData()
+    },
+    handleSearch (value) {
+      console.log(value)
+      this.searchValue = value
+      this.getData()
+    },
+    getData () {
+      this.loading = true
 
-            setTimeout((_this) => {
-                _this.loading = false
-            }, 1000, this)
-        }
+      setTimeout((_this) => {
+        _this.loading = false
+      }, 1000, this)
     }
+  }
 }
