@@ -1,265 +1,124 @@
 <template>
   <div class="main">
-    <div>登录页</div>
-    <el-button @click="handleSubmit">登录</el-button>
-    <!--    <a-form-->
-    <!--      id="formLogin"-->
-    <!--      class="user-layout-login"-->
-    <!--      ref="formLogin"-->
-    <!--      :form="form"-->
-    <!--      @submit="handleSubmit"-->
-    <!--    >-->
-    <!--      <a-tabs-->
-    <!--        :activeKey="customActiveKey"-->
-    <!--        :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"-->
-    <!--        @change="handleTabClick"-->
-    <!--      >-->
-    <!--        <a-tab-pane key="tab1" tab="账号密码登录">-->
-    <!--          <a-form-item>-->
-    <!--            <a-input-->
-    <!--              size="large"-->
-    <!--              type="text"-->
-    <!--              placeholder="账户: admin"-->
-    <!--              v-decorator="[-->
-    <!--                'username',-->
-    <!--                {-->
-    <!--                rules: [{ required: true, message: '请输入帐户名或邮箱地址' }, { validator: handleUsernameOrEmail }],-->
-    <!--                validateTrigger: 'change',-->
-    <!--                initialValue: 'admin'-->
-    <!--                }-->
-    <!--              ]"-->
-    <!--            >-->
-    <!--              <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
-    <!--            </a-input>-->
-    <!--          </a-form-item>-->
+    <div class="login-head">
+      <div class="head">Ant Design</div>
+      <div class="tips">Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+    </div>
+    <div class="user-layout-login">
+      <el-form ref="form" :model="form" :rules="rules">
+        <el-tabs>
+          <el-tab-pane>
+            <span style="padding: 10px 40px;" slot="label">账号密码登录</span>
+            <el-form-item prop="username">
+              <el-input  v-model="form.username"
+                         placeholder="账户: admin">
+                <i slot="prefix" class="el-icon-user"></i>
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input v-model="form.password"
+                        placeholder="密码: admin or ant.design"
+                        show-password>
+                <i slot="prefix" class="el-icon-lock"></i>
+              </el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-checkbox label="自动登录"></el-checkbox>
+              <span class="forget-password">忘记密码</span>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" style="width: 100%" @click="onSubmit" :disabled="disableLoginBtn">登  录</el-button>
+            </el-form-item>
+          </el-tab-pane>
 
-    <!--          <a-form-item>-->
-    <!--            <a-input-->
-    <!--              size="large"-->
-    <!--              type="password"-->
-    <!--              autocomplete="false"-->
-    <!--              placeholder="密码: admin or ant.design"-->
-    <!--              v-decorator="[-->
-    <!--                'password',-->
-    <!--                {-->
-    <!--                rules: [{ required: true, message: '请输入密码' }],-->
-    <!--                validateTrigger: 'blur',-->
-    <!--                 initialValue: 'ant.design'-->
-    <!--                }-->
-    <!--              ]"-->
-    <!--            >-->
-    <!--              <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
-    <!--            </a-input>-->
-    <!--          </a-form-item>-->
-    <!--        </a-tab-pane>-->
-    <!--        <a-tab-pane key="tab2" tab="手机号登录">-->
-    <!--          <a-form-item>-->
-    <!--            <a-input size="large" type="text" placeholder="手机号"-->
-    <!--                     v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">-->
-    <!--              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
-    <!--            </a-input>-->
-    <!--          </a-form-item>-->
-
-    <!--          <a-row :gutter="16">-->
-    <!--            <a-col class="gutter-row" :span="16">-->
-    <!--              <a-form-item>-->
-    <!--                <a-input size="large" type="text" placeholder="验证码"-->
-    <!--                         v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">-->
-    <!--                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
-    <!--                </a-input>-->
-    <!--              </a-form-item>-->
-    <!--            </a-col>-->
-    <!--            <a-col class="gutter-row" :span="8">-->
-    <!--              <a-button-->
-    <!--                class="getCaptcha"-->
-    <!--                tabindex="-1"-->
-    <!--                :disabled="state.smsSendBtn"-->
-    <!--                @click.stop.prevent="getCaptcha"-->
-    <!--                v-text="!state.smsSendBtn && '获取验证码' || (state.time+' s')"-->
-    <!--              ></a-button>-->
-    <!--            </a-col>-->
-    <!--          </a-row>-->
-    <!--        </a-tab-pane>-->
-    <!--      </a-tabs>-->
-
-    <!--      <a-form-item>-->
-    <!--        <a-checkbox v-decorator="['rememberMe']">自动登录</a-checkbox>-->
-    <!--        <router-link-->
-    <!--          :to="{ name: 'recover', params: { user: 'aaa'} }"-->
-    <!--          class="forge-password"-->
-    <!--          style="float: right;"-->
-    <!--        >忘记密码-->
-    <!--        </router-link>-->
-    <!--      </a-form-item>-->
-
-    <!--      <a-form-item style="margin-top:24px">-->
-    <!--        <a-button-->
-    <!--          size="large"-->
-    <!--          type="primary"-->
-    <!--          htmlType="submit"-->
-    <!--          class="login-button"-->
-    <!--          :loading="state.loginBtn"-->
-    <!--          :disabled="state.loginBtn"-->
-    <!--        >确定-->
-    <!--        </a-button>-->
-    <!--      </a-form-item>-->
-
-    <!--      <div class="user-login-other">-->
-    <!--        <span>其他登录方式</span>-->
-    <!--        <a>-->
-    <!--          <a-icon class="item-icon" type="alipay-circle"></a-icon>-->
-    <!--        </a>-->
-    <!--        <a>-->
-    <!--          <a-icon class="item-icon" type="taobao-circle"></a-icon>-->
-    <!--        </a>-->
-    <!--        <a>-->
-    <!--          <a-icon class="item-icon" type="weibo-circle"></a-icon>-->
-    <!--        </a>-->
-    <!--        <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
-    <!--      </div>-->
-    <!--    </a-form>-->
-
-    <!--    <two-step-captcha-->
-    <!--      v-if="requiredTwoStepCaptcha"-->
-    <!--      :visible="stepCaptchaVisible"-->
-    <!--      @success="stepCaptchaSuccess"-->
-    <!--      @cancel="stepCaptchaCancel"-->
-    <!--    ></two-step-captcha>-->
+          <el-tab-pane>
+            <span style="padding: 10px  45px" slot="label">手机号登录</span>
+            <span>待开发</span>
+          </el-tab-pane>
+        </el-tabs>
+      </el-form>
+      <div class="login-footer">
+        <page-footer></page-footer>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import md5 from 'md5'
 import {mapActions} from 'vuex'
+import PageFooter from '@/components/pageFooter/PageFooter'
 
 export default {
   name: 'Login',
+  components: {PageFooter},
   data () {
-    return {
-      customActiveKey: 'tab1',
-      loginBtn: false,
-      // login type: 0 email, 1 username, 2 telephone
-      loginType: 1,
-      requiredTwoStepCaptcha: false,
-      stepCaptchaVisible: false,
-      // form: this.$form.createForm(this),
-      state: {
-        time: 60,
-        loginBtn: false,
-        // login type: 0 email, 1 username, 2 telephone
-        loginType: 1,
-        smsSendBtn: false
+    const handleUsernameOrEmail = (rule, value, callback) => {
+      const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
+
+      if (regex.test(value)) {
+        this.loginType = 0
+      } else {
+        this.loginType = 1
       }
+      callback()
+    }
+
+    return {
+      form: {
+        username: 'admin',
+        password: 'ant.design'
+      },
+      rules: {
+        username: [
+          { required: true, message: '请输入帐户名或邮箱地址', trigger: 'blur' },
+          {validator: handleUsernameOrEmail, trigger: 'onchange'}
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' }
+        ]
+      },
+      disableLoginBtn: false,
+      loginType: 1// login type: 0 email, 1 username, 2 telephone
     }
   },
   methods: {
     ...mapActions(['Login', 'Logout']),
-    // handler
-    handleUsernameOrEmail (rule, value, callback) {
-      const {state} = this
-      const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
-      if (regex.test(value)) {
-        state.loginType = 0
-      } else {
-        state.loginType = 1
-      }
-      callback()
-    },
-    getCaptcha (e) {
-      e.preventDefault()
-      const {form: {validateFields}, state} = this
+    onSubmit () {
+      this.$refs.form.validate((validate) => {
+        if (!validate) return
 
-      validateFields(['mobile'], {force: true}, (err, values) => {
-        if (!err) {
-          state.smsSendBtn = true
+        const loginParams = {...this.form}
+        delete loginParams.username
 
-          const interval = window.setInterval(() => {
-            if (state.time-- <= 0) {
-              state.time = 60
-              state.smsSendBtn = false
-              window.clearInterval(interval)
-            }
-          }, 1000)
+        loginParams[this.form.loginType ? 'email' : 'username'] = this.form.username
+        loginParams.password = md5(this.form.password)
+        this.disableLoginBtn = true
 
-          // const hide = this.$message.loading('验证码发送中..', 0)
-          // getSmsCaptcha({mobile: values.mobile}).then(res => {
-          // setTimeout(hide, 2500)
-          // this.$notification['success']({
-          // message: '提示',
-          // description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-          // duration: 8
-          // })
-          // }).catch(err => {
-          // setTimeout(hide, 1);
-          // clearInterval(interval);
-          // state.time = 60;
-          // state.smsSendBtn = false;
-          // this.requestFailed(err)
-          // })
-        }
+        this.Login(loginParams)
+          .then((res) => this.loginSuccess(res))
+          .catch(err => {
+            this.requestFailed(err)
+          })
+          .finally(() => {
+            this.disableLoginBtn = false
+          })
       })
     },
-    // handleTabClick (key) {
-    //   this.customActiveKey = key
-    //   // this.form.resetFields()
-    // },
-    handleSubmit (e) {
-      // e.preventDefault()
-      const {
-        // form: {validateFields},
-        state,
-        // customActiveKey,
-        Login
-      } = this
-
-      // state.loginBtn = true
-
-      // const validateFieldsKey = customActiveKey === 'tab1' ? ['username', 'password'] : ['mobile', 'captcha']
-
-      // validateFields(validateFieldsKey, {force: true}, (err, values) => {
-      const values = {
-        username: 'admin',
-        password: 'ant.design'
-      }
-      // if (err) {
-      //   setTimeout(() => {
-      //     state.loginBtn = false
-      //   }, 600)
-      //   return
-      // }
-      const loginParams = {...values}
-      delete loginParams.username
-      loginParams[!state.loginType ? 'email' : 'username'] = values.username
-      loginParams.password = md5(values.password)
-
-      Login(loginParams)
-        .then((res) => this.loginSuccess(res))
-        .catch(err => {
-          this.requestFailed(err)
-        })
-        .finally(() => {
-          // state.loginBtn = false
-        })
-      // })
-    },
-    loginSuccess (res) {
-      console.log(res, this)
-
+    loginSuccess () {
       this.$router.replace('/')
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {
         this.$notify({
-          message: '欢迎',
-          description: `admin，欢迎回来`
+          title: '欢迎',
+          message: 'admin，欢迎回来'
         })
-        //   console.log('admin，欢迎回来')
       }, 1000)
     },
     requestFailed (err) {
       this.$notify({
-        message: '错误',
-        description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        duration: 4
+        title: '登录失败',
+        message: err.message
       })
     }
   }
@@ -281,52 +140,38 @@ export default {
     }
   }
 
+  .login-head{
+    padding-top: 30px;
+    text-align: center;
+    .head{
+      position: relative;
+      top: 2px;
+      color: rgba(0,0,0,.85);
+      font-weight: 600;
+      font-size: 33px;
+      font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+    }
+    .tips{
+      margin-top: 12px;
+      margin-bottom: 40px;
+      color: rgba(0,0,0,.45);
+      font-size: 14px;
+    }
+  }
+
   .user-layout-login {
-    width: 400px;
+    width: 370px;
     margin: 0 auto;
-
-    label {
-      font-size: 14px;
+    .forget-password{
+      float: right;
+      cursor: pointer;
+      color: #1890ff;
     }
-
-    .getCaptcha {
-      display: block;
-      width: 100%;
-      height: 40px;
-    }
-
-    .forge-password {
-      font-size: 14px;
-    }
-
-    button.login-button {
-      padding: 0 15px;
-      font-size: 16px;
-      height: 40px;
-      width: 100%;
-    }
-
-    .user-login-other {
-      text-align: left;
-      margin-top: 24px;
-      line-height: 22px;
-
-      .item-icon {
-        font-size: 24px;
-        color: rgba(0, 0, 0, 0.2);
-        margin-left: 16px;
-        vertical-align: middle;
-        cursor: pointer;
-        transition: color 0.3s;
-
-        &:hover {
-          color: #1890ff;
-        }
-      }
-
-      .register {
-        float: right;
-      }
+    .login-footer{
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: inherit;
     }
   }
 </style>

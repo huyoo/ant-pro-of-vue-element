@@ -56,6 +56,11 @@ export default {
         login(userInfo).then(response => {
           console.log(response)
 
+          if (response.result.isLogin) {
+            reject(response)
+            return
+          }
+
           const result = response.result
           Vue.ls.set(ACCESS_TOKEN, result.token, 60 * 60 * 1000)
 
