@@ -11,6 +11,8 @@ import Exception404 from '@/pages/exception/404'
 import Exception403 from '@/pages/exception/403'
 import Exception500 from '@/pages/exception/500'
 import Login from '@/pages/login/Login'
+import Fail from '@/pages/result/Fail'
+import Success from '@/pages/result/Success'
 // import TableList from '@/pages/list/TableList'
 // import StandardList from '@/pages/list/StandardList'
 // import Success from '@/pages/result/Success'
@@ -102,7 +104,7 @@ export const asyncRouterMap = [
             component: AdvanceProfile
           }
         ]
-      }, {
+      }, */ {
         path: '/result',
         name: 'result',
         meta: {title: '结果页', icon: 'check-circle'},
@@ -114,13 +116,13 @@ export const asyncRouterMap = [
             meta: {title: '成功页'},
             component: Success
           }, {
-            path: '/result/fail',
+            path: '/result/failure',
             name: 'fail',
             meta: {title: '失败页'},
             component: Fail
           }
         ]
-      }, */ {
+      }, {
         path: '/exception',
         name: 'exception',
         component: BlankLayout,
