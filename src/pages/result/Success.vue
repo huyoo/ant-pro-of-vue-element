@@ -21,7 +21,6 @@
               <div style="font-size: 12px; color: rgba(0, 0, 0, 0.45); position: relative; text-align: left;">
                 <div style="margin: 8px 0 4px">
                   曲丽丽
-                  <a-icon style="margin-left: 8px" type="dingding-o"/>
                 </div>
                 <div>2016-12-12 12:32</div>
               </div>

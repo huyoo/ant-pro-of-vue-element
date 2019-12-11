@@ -33,7 +33,7 @@ export const constantRouterMap = [
 export const asyncRouterMap = [
   {
     path: '/',
-    name: 'Dashboard',
+    name: 'home',
     meta: {title: '首页'},
     component: BasicLayout,
     children: [
@@ -107,7 +107,7 @@ export const asyncRouterMap = [
       }, */ {
         path: '/result',
         name: 'result',
-        meta: {title: '结果页', icon: 'check-circle'},
+        meta: {title: '结果页', icon: 'el-icon-circle-check'},
         component: BlankLayout,
         children: [
           {
@@ -126,7 +126,7 @@ export const asyncRouterMap = [
         path: '/exception',
         name: 'exception',
         component: BlankLayout,
-        meta: {title: '异常页', icon: 'warning'},
+        meta: {title: '异常页', icon: 'el-icon-circle-close'},
         children: [
           {
             path: '/exception/404',
