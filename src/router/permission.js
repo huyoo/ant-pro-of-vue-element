@@ -4,7 +4,6 @@
  */
 import router from './index'
 import store from '@/store/store'
-import {asyncRouterMap} from '@/router/router.config'
 
 const defaultRoutePath = '/exception/404'
 
@@ -41,10 +40,12 @@ router.beforeEach((to, from, next) => {
   }
 
   if (store.state.permission.addRouters.length === 0) {
-    store.dispatch('GenerateRoutes')
-      .then(() => {
+    const userInfo = (JSON.parse(localStorage.getItem('userInfo')))
+
+    store.dispatch('GenerateRoutes', {role: userInfo.roleId})
+      .then((res) => {
         next({path: defaultRoutePath})
-        router.addRoutes(asyncRouterMap)
+        router.addRoutes(res)
       })
   } else {
     next()

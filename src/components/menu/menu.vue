@@ -12,34 +12,7 @@
              text-color="#ffffffa6"
              active-text-color="#ffffff"
              unique-opened>
-<!--      <el-submenu index="/form">-->
-<!--        <template slot="title">-->
-<!--          <i class="el-icon-edit"></i>-->
-<!--          <span>表单页</span>-->
-<!--        </template>-->
-<!--        <el-menu-item index="/form/basic-form">基础表单</el-menu-item>-->
-<!--      </el-submenu>-->
-
-<!--      <el-submenu index="/result">-->
-<!--        <template slot="title">-->
-<!--          <i class="el-icon-circle-check"></i>-->
-<!--          <span>结果页</span>-->
-<!--        </template>-->
-<!--        <el-menu-item index="/result/success">成功页</el-menu-item>-->
-<!--        <el-menu-item index="/result/failure">失败页</el-menu-item>-->
-<!--      </el-submenu>-->
-
-<!--      <el-submenu index="/exception">-->
-<!--        <template slot="title">-->
-<!--          <i class="el-icon-circle-close"></i>-->
-<!--          <span>异常页</span>-->
-<!--        </template>-->
-<!--        <el-menu-item index="/exception/403">403</el-menu-item>-->
-<!--        <el-menu-item index="/exception/404">404</el-menu-item>-->
-<!--        <el-menu-item index="/exception/500">500</el-menu-item>-->
-<!--      </el-submenu>-->
-
-      <el-submenu v-if="hasMenu"
+      <el-submenu v-if="hasMenu && !item.hidden"
                   v-for="item in this.$store.state.permission.routers[1].children"
                   :key="item.name"
                   :index="item.name">
@@ -76,9 +49,6 @@ export default {
     return {
       logo
     }
-  },
-  created () {
-    console.log(this.$store.state.permission.routers)
   },
   computed: {
     hasMenu () {

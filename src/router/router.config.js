@@ -116,12 +116,12 @@ export const asyncRouterMap = [
           {
             path: '/result/success',
             name: 'success',
-            meta: {title: '成功页'},
+            meta: {title: '成功页', role: 'user'},
             component: Success
           }, {
             path: '/result/failure',
             name: 'fail',
-            meta: {title: '失败页'},
+            meta: {title: '失败页', role: 'user'},
             component: Fail
           }
         ]
@@ -134,17 +134,17 @@ export const asyncRouterMap = [
           {
             path: '/exception/404',
             name: '404',
-            meta: {title: '404'},
+            meta: {title: '404', role: 'user'},
             component: Exception404
           }, {
             path: '/exception/403',
             name: '403',
-            meta: {title: '403'},
+            meta: {title: '403', role: 'user'},
             component: Exception403
           }, {
             path: '/exception/500',
             name: '500',
-            meta: {title: '500'},
+            meta: {title: '500', role: 'user'},
             component: Exception500
           }
         ]
@@ -157,7 +157,7 @@ export const asyncRouterMap = [
           {
             path: '/feature/eventBus',
             name: 'eventBus',
-            meta: {title: '事件总线'},
+            meta: {title: '事件总线', role: 'admin'},
             component: EventBusParent
           }
           /* {
@@ -176,18 +176,12 @@ export const asyncRouterMap = [
           {
             path: '/user/user-center',
             name: 'userCenter',
-            meta: {title: '个人中心'},
+            meta: {title: '个人中心', role: 'user'},
             component: UserCenter
           }
         ]
-      }
-      // { path: '*', redirect: '/exception/404', hidden: true }
-      /* {
-          path: '/form',
-          name: 'form',
-          meta: {title: '组件库', icon: 'tool'},
-          component: PageLayout,
-      }, */
+      },
+      { path: '*', redirect: '/exception/404', hidden: true }
     ]
   }
 ]

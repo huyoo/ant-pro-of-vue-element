@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 import { builder, getBody } from '../util'
 
-const username = ['admin', 'super']
+const username = ['admin', 'user']
 // 强硬要求 ant.design 相同密码
 // '21232f297a57a5a743894a0e4a801fc3',
 const password = ['8914de686ab28dc22f30d3d8e107ff6c'] // admin, ant.design
@@ -26,7 +26,7 @@ const login = (options) => {
     'creatorId': 'admin',
     'createTime': 1497160610259,
     'deleted': 0,
-    'roleId': 'admin',
+    'roleId': body.username === 'admin' ? ['admin', 'user'] : ['user'],
     'lang': 'zh-CN',
     'token': '4291d7da9005377ec9aec4a71ea837f'
   }, '', 200, { 'Custom-Header': Mock.mock('@guid') })
